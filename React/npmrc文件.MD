@@ -1,0 +1,1 @@
+Check you npmrc file. Configure your repo info there. For details read doc!

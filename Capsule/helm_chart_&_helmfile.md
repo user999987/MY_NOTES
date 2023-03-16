@@ -1,0 +1,2 @@
+Helm 作为 Kubernetes 的包管理工具和 CNCF 毕业项目，在业界被广泛使用。但在实际使用场景中的一些需求 helm 并不能很好的满足，需要进行一些修改和适配，如同时部署多个 chart、不同部署环境的区分以及 chart 的版本控制。Helmfile 就是一个能够很好解决这些问题的小工具。
+https://cloud.tencent.com/developer/article/1764591
