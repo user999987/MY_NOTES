@@ -32,5 +32,7 @@ docker run -v mydata:/path/to/container/dir myimage
 VOLUME 声明容器挂载的目录，docker volume create 命令创建一个独立于容器的数据卷，两者可以搭配使用。
 
 
-docker run -d -p 8687:8686 -v /path/on/host:/myvolume myimage \
-docker run -d -p 8686:8686 -v /Users/vvayne/xcloud/paymentchannel/logs:/app/logs --name pc pc \
+```bash
+docker run -d -p 8686:8686 -v /Users/vvayne/xcloud/paymentchannel/logs:/app/logs --name pc pc
+-d 后台运行 第一个8686是宿主机 第二个8686是容器 -v目录挂载  第一个路径宿主机 第二个路径容器 第一个pc是容器名 第二个是镜像名
+```
