@@ -67,3 +67,9 @@ const value='ndccode-RX-facode'
 const sku=generateSku(value)
 console.log(sku=="f269d2ec-ff47-37b3-b14f-c7217ca0c40f")
 ```
+
+lsof -i :8080 \
+lsof -iTCP \
+
+
+$ killall clock1

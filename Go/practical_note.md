@@ -79,57 +79,15 @@ router.Run(":8080")
 ```
 
 
-Toml read \
-1. no need to use struct tag
-2. how to read below code? whne you have `[]`, you need nest a struct, when you have `[[]]`, type of nested struct is an array
-```toml 
-name = "xcloud"
-[rabbit]
-server = "104.233.212.25"
-port = 5672
-user = "god"
-address = "CN"
-[[arr]]
-first=1
-[[arr]]
-first=11
-```
 ```go
-type RabbitConfig struct {
-	Server   string //`toml:"server"`
-	User     string `toml:"user"`
-	Port     int    `toml:"port"`
-	Location string `tmol:"location"`
-}
-type Config struct {
-	Name   string
-	Rabbit RabbitConfig
-	Arr    []ArrConfig
-}
-type ArrConfig struct {
-	First int
-}
-
-
-func main() {
-	var config Config
-	if _, err := toml.DecodeFile("config.toml", &config); err != nil {
-		fmt.Println("Error decoding config file:", err)
-		return
-	}
-
-	fmt.Println(config.Rabbit)
-	fmt.Println(config.Rabbit.User)
-	fmt.Println(config.Rabbit.Port)
-	fmt.Println(config.Rabbit.Location)
-	fmt.Println(config.Rabbit.Server)
-	fmt.Println(config.Name)
-	fmt.Println(config.Arr[0].First)
-	fmt.Println(config.Arr[1].First)
-	}
+     var cwd string
+     func init() {
+         var err error
+         cwd, err = os.Getwd()
+         if err != nil {
+             log.Fatalf("os.Getwd failed: %v", err)
+} }
 ```
-
-
 
 In Go, when a struct field is declared as a pointer type (i.e. *Type), the field is stored as a memory address that points to the actual value stored somewhere else in memory. On the other hand, when a struct field is declared as a non-pointer type (i.e. Type), the actual value is stored directly in the field itself.
 
