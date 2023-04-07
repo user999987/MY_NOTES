@@ -11,23 +11,36 @@ clients:
 scrape_configs:
 - job_name: app
   pipeline_stages:
-    - json:
-        expressions:
-          level: level
-          time: timestamp
-    - timestamp:
-        source: time
-        format: RFC3339Nano
-    - drop:
-        older_than: 168h # 7 days in hours
+  - match:
+      selector: '{author="usr1"}'
+      stages:
+      - json:
+          expressions:
+            level: level
+            time: timestamp
+      - timestamp:
+          source: time
+          format: RFC3339Nano
+      - drop:
+          older_than: 168h # 7 days in hours
+  - match:
+      selector: '{author="usr2"}'
+      stages:
+      - regex:
+          expression: '.*"@timestamp":"(?P<time>[T\d-:.Z]*)"'
+      - timestamp:
+          source: time
+          format: RFC3339Nano
+      - drop:
+          older_than: 168h # 7 days in hours
   static_configs:
   - targets:
       - localhost
     labels:
-      author: wayne
-      __path__: /var/log/wayne/*log
+      author: usr1
+      __path__: /var/log/usr1/*log
   - targets:
       - localhost
     labels:
-      author: frank
-      __path__: /var/log/frank/*log
+      author: usr2
+      __path__: /var/log/usr2/*log
