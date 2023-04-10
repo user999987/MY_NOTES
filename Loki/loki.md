@@ -57,3 +57,4 @@ curl --location --request POST 'http://localhost:3100/loki/api/v1/push' \
     ]
 }'
 ```
+Ref: https://www.zhihu.com/column/c_1262077765433348096
