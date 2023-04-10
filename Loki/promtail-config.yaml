@@ -44,3 +44,5 @@ scrape_configs:
     labels:
       author: usr2
       __path__: /var/log/usr2/*log
+
+# Ref: https://grafana.com/docs/loki/latest/clients/promtail/
