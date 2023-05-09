@@ -17,7 +17,14 @@ ENTRYPOINT ["command","para1","para2"]
 ```
 
 
-docker compose - config ports, dependency relationship, healthcheck, env virable
+docker-compose up -d restart
+docker-compose up --force-recreate service-name
+
+
+
+healthcheck, env virable
+
+
 
 helm chars deploy the k8s
 
