@@ -17,11 +17,11 @@ Taking the perspective of investors in analyzing market-determined interest rate
 r = Real risk-free interest rate + Inflation premium + Default risk premium + Liquidity premium + Maturity premium
 ```
 Real risk-free interest rate: single-period interest rate for a com- pletely risk-free security if no inflation were expected. It reflects the time preferences of individuals for current versus future real consumption.\
-Inflation premium: compensates investors for expected inflation and reflects the average inflation rate expected over the maturity of the debt. 投资者补偿预期通货膨胀，并反映了债务到期期限内预期的平均通胀率. (maturity of the debt: 债务到期日). The sume of the real risk-free interest rate + the inflation premium is the nominal risk-free interest rate(名义无风险利率)(Many countries have governmental short-term debt whose interest rate can be considered to represent the nominal risk-free interest rate in that country. The interest rate on a 90-day US Treasury bill (T-bill), for example, represents the nominal risk-free interest rate over that time horizon.US T-bills can be bought and sold in large quantities with minimal transaction costs and are backed by the full faith and credit of the US government.)\
-Default risk premium: compensates investors for the possibility that the borrower will fail to make a promised payment at the contracted time and in the contracted amount\
-Liquidity premium: compensates investors for the risk of loss relative to an investment's fair value if the investment needs to be converted to cash quickly. 当投资者持有较不流动或不易变现的资产时，如果他们需要迅速将其转换为现金，可能会面临一定的风险。这种风险包括以低于公允价值的价格出售资产或无法及时变现资产的可能性。\
+1. Inflation premium: compensates investors for expected inflation and reflects the average inflation rate expected over the maturity of the debt. 投资者补偿预期通货膨胀，并反映了债务到期期限内预期的平均通胀率. (maturity of the debt: 债务到期日). The sume of the real risk-free interest rate + the inflation premium is the nominal risk-free interest rate(名义无风险利率)(Many countries have governmental short-term debt whose interest rate can be considered to represent the nominal risk-free interest rate in that country. The interest rate on a 90-day US Treasury bill (T-bill), for example, represents the nominal risk-free interest rate over that time horizon.US T-bills can be bought and sold in large quantities with minimal transaction costs and are backed by the full faith and credit of the US government.)\
+2. Default risk premium: compensates investors for the possibility that the borrower will fail to make a promised payment at the contracted time and in the contracted amount\
+3. Liquidity premium: compensates investors for the risk of loss relative to an investment's fair value if the investment needs to be converted to cash quickly. 当投资者持有较不流动或不易变现的资产时，如果他们需要迅速将其转换为现金，可能会面临一定的风险。这种风险包括以低于公允价值的价格出售资产或无法及时变现资产的可能性。\
 为了补偿这种风险，投资者要求获得流动性溢价。流动性溢价反映了投资者愿意为持有较不流动资产支付的额外回报。这个额外回报可以补偿投资者在转换资产时可能遭受的损失，并反映了市场对于较不流动资产的需求和供给之间的差异。例如，美国国债券（T-bills）不会承担流动性溢价，因为可以大量购买和出售而不会影响其市场价格。相比之下，许多小型发行人的债券在发行后交易频率较低；这些债券的利率包括反映出售持仓的相对高成本（包括对价格的影响）的流动性溢价。
-Maturity premium(到期溢价): compensates investors for the increased sensitivity of the market value of debt to a change in market interest rates as maturity is extended(补偿投资者随着债务到期期限延长,债务市场对市场利率变化的敏感性增加的风险)The difference between the interest rate on longer-maturity, liquid Treasury debt and that on short-term Treasury debt reflects a `positive maturity premium` for the longer-term debt and possibly different inflation premiums as well.(长期流动性国债利率与短期国债利率之间的差异反映了长期债务的`正向到期溢价`,可能还包括不同的通胀溢价)
+4. Maturity premium(到期溢价): compensates investors for the increased sensitivity of the market value of debt to a change in market interest rates as maturity is extended(补偿投资者随着债务到期期限延长,债务市场对市场利率变化的敏感性增加的风险)The difference between the interest rate on longer-maturity, liquid Treasury debt and that on short-term Treasury debt reflects a `positive maturity premium` for the longer-term debt and possibly different inflation premiums as well.(长期流动性国债利率与短期国债利率之间的差异反映了长期债务的`正向到期溢价`,可能还包括不同的通胀溢价)
 
 ## SECTION 3 FUTURE VALUE OF A SIGNAL CASH FLOW
 
@@ -78,7 +78,7 @@ $FV_N = A[(1+r)^{N-1} + (1+r)^{N-2} + ... + (1+r)^1 + (1+r)^0]$\
 $FV_N = A[\frac {(1+r)^N-1}{r}]$\
 A is annuity amount.
 ### Unequal Cash Flows
-![unequal_cash_flows](model_01_unequal_cash_flows.png)
+![unequal_cash_flows](model_01_FV_unequal_cash_flows.png)
 
 ## SECTION 7 PRESENT VALUE OF A SINGLE CASH FLOW
 Just as the future value factor links today's present value with tomorrow's future value, the present value factor allows us to discount future value to present value.\
@@ -97,3 +97,110 @@ $N = number of years$
 
 ## SECTION 9 PRESENT VALUE OF A SERIES OF EQUAL AND UNEQUAL CASH FLOWS
 ### The present value of a series of equal cash flows
+$PV = \frac{A}{(1+r)} + \frac{A}{(1+r)^2} + \frac{A}{1+r}^3 + ... + \frac{A}{(1+r)^N-1} + \frac {A}{1+r}^N$\
+where \
+$A$ = annuity amount\
+$r$ = the interest rate per period corresponding to the frequency of annuity payments(annual, quarterly, monthly)\
+$N$ = the number of annuity payments\
+$PV = A[\frac{1-\frac{1}{(1+r)^N}}{r}]$\
+这里的年金PV计算和FV与PV的转换其实有点差异  下面的例子很好的诠释了这一点
+```
+Example 13
+A German pension fund manager anticipates that benefits of €1 million per year must be paid to retirees. Retirements will not occur until 10 years from now at time t = 10. Once benefits begin to be paid, they will extend until
+t = 39 for a total of 30 payments. What is the present value of the pension liability if the appropriate annual discount rate for plan liabilities is 5 percent compounded annually?
+```
+$A = 1,000,000$\
+$r=5\%=0.05$\
+$N=30$\
+$PV=A[\frac{1-\frac{1}{(1+r)^N}}{r}]$\
+$PV=15,372,451.03$
+
+$FV_N = 15,372,451.03$ (the present value at t=9)\
+$N=9$\
+$r=5\%=0.05$\
+$ PV=FV_N(1+r)^{-9}$\
+$PV=15,372,451.03*(0.644609)$
+
+### The present value of a series of unequal cash flows
+![uneuqal_PV_cash_flow](model_01_PV_unequal_cash_flows.png)
+
+## SECTION 10 PRESENT VALUE OF A PERPETUITY
+$PV = A\sum_{t=1}^∞ [\frac{1}{(1+r)^t}]$\
+while |r|<1, the sum of present value factors converges\
+$PV = \frac{A}{r}$\
+### Present value of a Projected Perpetuity
+```
+Consider a level perpetuity of £100 per year with its first payment beginning at t = 5. What is its present value today (at t = 0), given a 5 percent discount rate?
+```
+
+## SECTION 11 SOLVING FOR INTEREST RATES, GROWTH RATES, AND NUMBER OF PERIODS
+
+### Solving for interest rates and growth rates
+```
+Suppose a bank deposit of €100 is known to generate a payoff of €111 in one year.
+```
+$1 + r = FV/PV$\
+$1+r=1.11$\
+$r=0.11$\
+An interest rate can also be considered a growth rate.\
+$g=(FV_N/PV)^{1/N}-1$
+
+### Solving for the number of periods
+```
+You are interested in determining how long it will take an investment of €10,000,000 to double in value. The current interest rate is 7 percent com- pounded annually. How many years will it take €10,000,000 to double to €20,000,000
+```
+$(1+r)_N = FV_N/PV = 2$\
+$N*ln(1+r) = ln(2)$\
+$ N = ln(2)/ln(1+r)$
+
+### Solving for size of annuity payments
+```
+You are planning to purchase a $120,000 house by making a down payment of $20,000 and borrowing the remainder with a 30-year fixed-rate mortgage with monthly payments. The first payment is due at t = 1. Current mortgage interest rates are quoted at 8 percent with monthly compounding. What will your monthly mortgage payments be?
+```
+$PV=A[\frac{1-\frac{1}{(1+r)^N}}{r}]$\
+$PV=100,000$\
+$r_s=8\%=0.08$\
+$m=12$\
+$r_s/m=0.08/12=0.006667$\
+$N=30$\
+$mN=12x30=360$\
+$A=733.76$
+
+Cash Flow Additivity Principle\
+$PV_{total} = PV_1 + PV_2 + PV_3 + ... + PV_n$
+
+```
+Jill Grant is 22 years old (at t = 0) and is planning for her retirement at age 63 (at t = 41). She plans to save $2,000 per year for the next 15 years (t = 1 to t = 15). She wants to have retirement income of $100,000 per year for 20 years, with the first retirement payment starting at t = 41. How much must Grant save each year from t = 16 to t = 40 in order to achieve her retirement goal? Assume she plans to invest in a diversified stock-and-bond mutual fund that will earn 8 percent per year on average.
+Grant 22岁t=0, 计划63退休t=41,前15年每年存2k(t=1 to t=15),想从t=41开始每年收到100k退休金收20年. 他从t=16到t=40每年存多少能达到他的目标? 假设利率是8.
+```
+Step 1:\
+$A=2,000$\
+$r=0.08$\
+$N=15$\
+$FV = 2,000(27.152114)$\
+$FV=54,304.23$\
+Step 2:\
+$A=100,000$\
+$r=0.08$\
+$N=20$\
+$PV=100,000*(9.818147)=981,814.74$\
+Step 3:\
+$FV_N=981,814.74$\
+$N=40-15$\
+$r=0.08$\
+$PV=981,814.74*(1.08)_{-25}$\
+$PV=981,814.74*(0.146018)=143,362.53$\
+$143,362.53-54,304.23=89058.30$\
+Step 4:\
+$PV=89,058.30$\
+$r=0.08$\
+$N=25$\
+$A=PV/{Present\ Value\ Annuity\ Factor}$\
+$A=89,058.3/10.674776 = 8,342.87$
+
+## SECTION 13 PRESENT AND FUTURE VALUE EQUIVALENCE AND THE ADDITIVITY PRINCIPLE
+### The Equivalence of Present and Future Values
+![part1](model_01_equivalence_FV_PV_p1.png)
+![part2](model_01_equivalence_FV_PV_p2.png)
+### How an Initial Present Value Funds an Annuity
+![PV_funds_annuity](model_01_PV_funds_annuity.png)
