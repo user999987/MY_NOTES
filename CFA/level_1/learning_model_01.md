@@ -52,7 +52,7 @@ $PV = \$10,000$ \
 $rs = 8% = 0.08$ \
 $N=2$ \
 $FV_N = PVe^{{r_s}N}$
-![compounding_frequency_FV](model_01_compounding_frequency_on_FV.png)
+![compounding_frequency_FV](model01/model_01_compounding_frequency_on_FV.png)
 The ending dollar amount with continuous compounding is the maximum amount that can be earned with a stated annual rate of 8 percent.\
 Above figure also shows that a $1 investment earning 8.16 percent compounded annually grows to the same future value at the end of one year as a $1 investment earning 8 percent compounded semiannually.This result leads us to a distinction between the stated annual interest rate and the `effective annual rate`(EAR). For an 8 percent stated annual interest rate with semiannual compounding, the EAR is 8.16 percent
 
@@ -70,7 +70,7 @@ With continuous compounding, we can solve for the effective annual rate as: $EAR
 普通年金指的是在每个支付期末支付现金流，而年金到期指的是在每个支付期初支付现金流
 ### Equal Cash Flows - Ordinary Annuity
 Consider an ordinary annuity paying 5 percent annually. Suppose we have five separate deposits of $1,000 occurring at equally spaced intervals of one year, with the first payment occurring at t = 1. Our goal is to find the future value of this ordinary annuity after the last deposit at t = 5. 
-![equal_cash_flows](model_01_equal_cash_flows.png)
+![equal_cash_flows](model01/model_01_equal_cash_flows.png)
 这种计算方式是基于每笔现金得出的结果, 每笔现金流计算自己的复利然后相加.\
 还有一种情况是新存入的1000元会与已有的本金和利息相加，并作为新的本金进行复利计算\
 以上两种情况得出的结果是一样的.\
@@ -78,7 +78,7 @@ $FV_N = A[(1+r)^{N-1} + (1+r)^{N-2} + ... + (1+r)^1 + (1+r)^0]$\
 $FV_N = A[\frac {(1+r)^N-1}{r}]$\
 A is annuity amount.
 ### Unequal Cash Flows
-![unequal_cash_flows](model_01_FV_unequal_cash_flows.png)
+![unequal_cash_flows](model01/model_01_FV_unequal_cash_flows.png)
 
 ## SECTION 7 PRESENT VALUE OF A SINGLE CASH FLOW
 Just as the future value factor links today's present value with tomorrow's future value, the present value factor allows us to discount future value to present value.\
@@ -122,7 +122,7 @@ $ PV=FV_N(1+r)^{-9}$\
 $PV=15,372,451.03*(0.644609)$
 
 ### The present value of a series of unequal cash flows
-![uneuqal_PV_cash_flow](model_01_PV_unequal_cash_flows.png)
+![uneuqal_PV_cash_flow](model01/model_01_PV_unequal_cash_flows.png)
 
 ## SECTION 10 PRESENT VALUE OF A PERPETUITY
 $PV = A\sum_{t=1}^∞ [\frac{1}{(1+r)^t}]$\
@@ -200,7 +200,7 @@ $A=89,058.3/10.674776 = 8,342.87$
 
 ## SECTION 13 PRESENT AND FUTURE VALUE EQUIVALENCE AND THE ADDITIVITY PRINCIPLE
 ### The Equivalence of Present and Future Values
-![part1](model_01_equivalence_FV_PV_p1.png)
-![part2](model_01_equivalence_FV_PV_p2.png)
+![part1](model01/model_01_equivalence_FV_PV_p1.png)
+![part2](model01/model_01_equivalence_FV_PV_p2.png)
 ### How an Initial Present Value Funds an Annuity
-![PV_funds_annuity](model_01_PV_funds_annuity.png)
+![PV_funds_annuity](model01/model_01_PV_funds_annuity.png)

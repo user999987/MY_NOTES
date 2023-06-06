@@ -9,4 +9,19 @@
 9. certificate of deposit: CD 
 10. stated annual interest rate: 陈述年利率
 11. quoted interest rate: 报价利率, 名义利率(这个和上面的那个基本指的就是一年的年率)
-perpetuity: 永续年金
+12. perpetuity: 永续年金
+13. dividend: 股息,彩金,收益
+14. securities: 证券
+15. exchange: 交易所, 交易
+16. commission: 委员会
+17. Securities and Exchange Commission(SEC):证券交易委员会
+18. fiscal: 财政的
+19. excerpt: 摘录, 片段
+20. equity: 普通股
+21. index: 指数 (cost of living index生活成本指数)
+22. equity index: 股指
+23. contingency table: 列联表
+24. portfolio: 投资组合
+25. sector: 行业
+26. capitalization: 资本总额, 市值(commonly referred to as "market cap")
+27. GICS (Global Industry Classification Standard): 全球行业分类标准
