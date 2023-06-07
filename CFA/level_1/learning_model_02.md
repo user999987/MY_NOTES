@@ -38,7 +38,7 @@ Raw data can be organized into two typ- ical formats for quantitative analysis: 
 2. two-dimensional rectangular array: also called a data table
 
 ## SECTION 4 SUMMARIZING DATA USING FREQUENCY DISTRIBUTIONS
-![frequency_distribution](model_02_frequency_distribution.png)
+![frequency_distribution](model02/model_02_frequency_distribution.png)
 * absolute frequency: or simply the raw frequency, is the actual number of obser- vations counted for each unique value of the variable
 * relative frequency (in the third column), which is calculated as the absolute frequency of each unique value of the variable divided by the total number of observations.
 
@@ -57,5 +57,56 @@ Suppose that for ease of interpretation we want to use a bin width stated in who
 
 ## SECTION 5 SUMMARIZING DATA USING A CONTINGENCY TABLE
 We have shown that the frequency distribution table is a powerful tool to summarize data for one variable. Contingency table is used to summarize data for two variables simultaneously.\
+`Contingency Table based on total count`:\
 ![pf](model02/model_02_pf_by_sector_market_cap.png)\
-There are 275 small-cap health care stocks, making it the portfolio's largest subgroup in terms of frequency. These data are also called `joint frequencies` because you are joining one variable from the row (i.e., sector) and the other variable from the column (i.e., market cap) to count observations. The joint frequencies are then added across rows and across columns, and these corresponding sums are called `marginal frequencies`. For example, the marginal frequency of health care stocks in the portfolio is the sum of the joint frequencies across all three levels of market cap, so 435 (= 275 + 105 + 55)
+There are 275 small-cap health care stocks, making it the portfolio's largest subgroup in terms of frequency. These data are also called `joint frequencies` because you are joining one variable from the row (i.e., sector) and the other variable from the column (i.e., market cap) to count observations. The joint frequencies are then added across rows and across columns, and these corresponding sums are called `marginal frequencies`. For example, the marginal frequency of health care stocks in the portfolio is the sum of the joint frequencies across all three levels of market cap, so 435 (= 275 + 105 + 55)\
+`Contingency Table relative frequencies based on total count`\
+![f_t](model02/model_02_frequency_total.png)\
+
+`Contingency Table relative frequencies based on marginal frequencies of market cap`\
+![f_m](model02/model_02_frequency_margin.png)\
+
+Contingency tables can be used in different applications. One application is for evaluating the performance of a classification model (in this case, the contingency table is called a confusion matrix). Suppose we have a model for classifying companies into two groups: those that default on their bond payments and those that do not default. The confusion matrix for displaying the model's results will be a 2 × 2 table showing the frequency of actual defaults versus the model's predicted frequency of defaults. 
+![cm_bond_default](model02/model_02_cm_bond_default.png)
+
+Another application of contingency tables is to investigate potential association between two categorical variables. One way to test for a potential association between categorical variables is to perform a chi-square test of independence. Essentially, the procedure involves using the marginal frequencies in the contingency table to construct a table with expected values of the observations. The actual values and expected values are used to derive the chi-square test statistic. This test statistic is then compared to a value from the chi-square distribution for a given level of significance. If the test statistic is greater than the chi-square distribution value, then there is evidence to reject the claim of independence, implying a significant association exists between the categorical variables.\
+![ct](model02/model_02_ct.png)\
+Describe how the contingency table is used to set up a test for independence between fund style and risk level.\
+首先假设独立然后根据P(AB)=P(A)*P(B)得到期望频数. \
+Step1:\
+Add the marginal frequencies and overall total to the contingency table. We have also included the relative frequency table for observed values.\
+![mf_rf](model02/model_02_mf_rf.png)\
+Step2:\
+Use the marginal frequencies in the contingency table to construct a table with expected values of the observations. \
+$P(Low\ Risk)=256/315$\
+$P(High\ Risk)=59/315$\
+$P(Value)=216/315$\
+$P(Growth)=99/315$
+
+Expected value for Growth/Low Risk is: (99 * 256) / 315 = 80.46\
+Expected value for Value/High Risk is: (216 * 59) / 315 = 40.46
+![ex_mf_rf](model02/model_02_expected_mf_rf.png)
+
+Step 3\
+Use the actual values and the expected values of observation counts to derive the chi-square test statistic, which is then compared to a value from the chi-square distribution for a given level of significance. If the test statistic is greater than the chi-square distribution value, then there is evidence of a significant association between the categorical variables.
+
+## SECTION 6 DATA VISUALIZATION
+### Histogram, Polygon, Bar
+![histogram](model02/model_02_histogram.png)histogram ![polygon](model02/model_02_polygon.png)polygon ![bar](model02/model_02_bar.png)bar ![grouped bar chart](model02/model_02_frequency_sec_mcap.png)grouped bar chart ![stacked bar chart](model02/model_02_stack_bar_chart.png)stacked bar chart
+### Tree map
+![tree map](model02/model_02_tree_map.png)Tree-maps become difficult to read if the hierarchy involves more than three levels.
+### Word Cloud
+A word cloud (also known as tag cloud) is a visual device for representing textual data. A word cloud consists of words extracted from a source of textual data, with the size of each distinct word being proportional to the frequency with which it appears in the given text.
+![word cloud report](model02/model_02_word_cloud_report.png) ![word cloud](model02/model_02_word_cloud.png)
+### Line chart
+A line chart is used to display the change of data series over time.
+![line_chart](model02/model_02_line_chart.png)
+This comparison can help us understand whether ABC's stock price movement over the period is due to potential mispricing of its share issuance or instead due to industry-specific factors that also affect its competitors' stock prices. The comparison shows that over the period, the sector index moved in a nearly opposite trend versus ABC's stock price movement. This indicates that the steep decline in ABC's stock price is less likely attributable to sector-specific factors and more likely due to potential over-pricing of its IPO or to other company-specific factors.
+
+How can we add an additional dimension to a two-dimensional line chart? We can replace the data points with varying-sized bubbles to represent a third dimension of the data. Moreover, these bubbles may even be color-coded to present additional information. This version of a line chart is called a bubble line chart.
+![bubble_line_chart](model02/model_02_bubble_line_chart.png)
+### Scatter Plot
+It is a useful tool for displaying and understanding potential relationships between the variables.
+![spm](model02/model_02_spm.png)
+The scatter plot matrix contains each combination of bivariate scatter plot (i.e., S&P 500 vs. each sector, IT vs. utilities, IT vs. financials, and financials vs. utilities) as well as univariate frequency distribution histograms for each variable plotted along the diagonal. In this way, the scatter plot matrix provides a concise visual summary of each variable and of potential relationships among them. It is worth pointing out that the upper triangle of the matrix is the mirror image of the lower triangle, so the compact form of the scatter plot matrix that uses only the lower triangle is also appropriate.
+### Heat Map
