@@ -109,4 +109,19 @@ How can we add an additional dimension to a two-dimensional line chart? We can r
 It is a useful tool for displaying and understanding potential relationships between the variables.
 ![spm](model02/model_02_spm.png)
 The scatter plot matrix contains each combination of bivariate scatter plot (i.e., S&P 500 vs. each sector, IT vs. utilities, IT vs. financials, and financials vs. utilities) as well as univariate frequency distribution histograms for each variable plotted along the diagonal. In this way, the scatter plot matrix provides a concise visual summary of each variable and of potential relationships among them. It is worth pointing out that the upper triangle of the matrix is the mirror image of the lower triangle, so the compact form of the scatter plot matrix that uses only the lower triangle is also appropriate.
-### Heat Map
+### Guide to Selecting among Visualization Types
+![guide](model02/model_02_guide.png)
+
+## SECTION 7 MEASURES OF CENTRAL TENDENCY
+A statistic is a summary measure of a set of observations, and descriptive statis- tics summarize the central tendency and spread variation in the distribution of data. If the statistic summarizes the set of all possible observations of a population, we refer to the statistic as a parameter. If the statistic summarizes a set of observations that is a subset of the population, we refer to the statistic as a sample statistic, often leaving off the word "sample" and simply referring to it as a statistic.
+
+### The Arithmetic Mean
+It is the sum of the values of the observations divided by the number of observations. We can calculate the distance between the mean and each outcome, which is the deviation. Deviations from the arithmetic mean are important information because they indicate risk. The concept of deviations around the mean forms the foundation for the more complex concepts of variance, skewness, and kurtosis.
+
+A property and potential drawback of the arithmetic mean is its sensitivity to extreme values, or outliers. Because all observations are used to compute the mean and are given equal weight (i.e., importance), the arithmetic mean can be pulled sharply upward or downward by extremely large or small observations, respectively.
+![three_mean](model02/model_02_three_mean.png)\
+For winsorized mean: a 95% winsorized mean sets the bottom 2.5% of values equal to the value at or below which 2.5% of all the values lie (as will be seen shortly, this is called the "2.5th percentile" value) and the top 2.5% of values equal to the value at or below which 97.5% of all the values lie (the "97.5th percentile" value)
+
+### The Median
+The median is the value of the middle item of a
+set of items that has been sorted into ascending or descending order.

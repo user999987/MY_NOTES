@@ -34,3 +34,7 @@
 34. frequency: 统计学中 频数, 次数
 35. volatile: 不稳定的, 变化无常的
 36. return: 回报, 利润
+37. Measure of Central Tendency: 集中趋势度量. 最常见的几种集中趋势包括算术平均数, 中位数, 以及 众数.
+38. fulcrum: 支点
+39. deviation: the distance between the mean and each outcome
+40. outlier: 异常值
