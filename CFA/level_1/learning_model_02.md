@@ -30,7 +30,7 @@ regulatory filings, etc.); and
 Unstructured data may offer new market insights not normally contained in data from traditional sources and may provide potential sources of returns for investment processes. Typically, financial models are able to take only structured data as inputs; therefore, unstructured data must first be transformed into structured data that models can process.
 
 The SEC has utilized eXtensible Business Reporting Language (XBRL) to structure data.The data extracted from the XBRL submission can be organized into five tab-delimited TXT format files that contain information about the submission, including taxonomy `tags` (i.e., financial statement items), `dates`, units of measure (`uom`), `values` (i.e., for the tag items), and more—making it readable by computer.
-![xbrl](model_02_XBRL.png)
+![xbrl](model02/model_02_XBRL.png)
 
 ### Data Summarization
 Raw data can be organized into two typ- ical formats for quantitative analysis: one-dimensional arrays and two-dimensional rectangular arrays.
@@ -123,5 +123,23 @@ A property and potential drawback of the arithmetic mean is its sensitivity to e
 For winsorized mean: a 95% winsorized mean sets the bottom 2.5% of values equal to the value at or below which 2.5% of all the values lie (as will be seen shortly, this is called the "2.5th percentile" value) and the top 2.5% of values equal to the value at or below which 97.5% of all the values lie (the "97.5th percentile" value)
 
 ### The Median
-The median is the value of the middle item of a
-set of items that has been sorted into ascending or descending order.
+The median is the value of the middle item of a set of items that has been sorted into ascending or descending order.
+* Odd: V[(n+1)/2] (人话: 中间的数)
+* Even: V(n/2) + V(n/2+1) (人话: 中间俩数的平均值)
+A potential advantage of the median is that, unlike the mean, extreme values do not affect it.\
+缺点要排序
+
+### The Mode
+The mode is the most frequently occurring value in a distribution.
+
+### The Weighted Mean
+To illustrate the weighted mean concept, an investment manager with $100 million to invest might allocate $70 million to equities and $30 million to bonds. The portfolio, therefore, has a weight of 0.70 on stocks and 0.30 on bonds.\
+$Weighted\ Mean=0.7*stocks+0.3*bonds$
+
+### Geometric Mean
+$Geometric\ Mean=\sqrt[n]{X_1*X_2*...*X_N}$\\
+Risky assets can have negative returns up to −100% (if their price falls to zero), so
+we must take some care in defining the relevant variables to average in computing a geometric mean. We must recast the returns to make them positive. We do this by adding 1.0 to the returns expressed as decimals, where Rt represents the return in period t. The term (1 + $R_t$) represents the year-ending value relative to an initial unit of investment at the begin- ning of the year. As long as we use (1 + $R_t$), the observations will never be negative because the biggest negative return is −100%. The result is the geometric mean of 1 + $R_t$; by then subtracting 1.0 from this result, we obtain the geometric mean of the individual returns $R_t$.\
+$1+R_G=\sqrt[T]{(1+R_1)*(1+R_2)*...*(1+R_T)}$\
+Geometric Mean Return Formula. Given a time series of holding period returns Rt, t = 1, 2, ..., T, the geometric mean return over the time period spanned by the returns R1 through RT is:\
+$1+R_G=[\prod_{t=1}^T(1+R_t)]^\frac{1}{T}$
