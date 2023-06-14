@@ -38,3 +38,4 @@
 38. fulcrum: 支点
 39. deviation: the distance between the mean and each outcome
 40. outlier: 异常值
+41. P/E: stands for Price-to-Earnings ratio. It is a financial metric used to evaluate the valuation of a company's stock. The P/E ratio is calculated by dividing the market price per share of a company's stock by its earnings per share (EPS). For example, if a company has earnings of $10 million and has 5 million outstanding shares, the earnings per share (EPS) would be $2 ($10 million divided by 5 million shares). So, in this case, each share of the company's stock represents $2 of earnings.

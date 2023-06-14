@@ -143,3 +143,28 @@ we must take some care in defining the relevant variables to average in computin
 $1+R_G=\sqrt[T]{(1+R_1)*(1+R_2)*...*(1+R_T)}$\
 Geometric Mean Return Formula. Given a time series of holding period returns Rt, t = 1, 2, ..., T, the geometric mean return over the time period spanned by the returns R1 through RT is:\
 $1+R_G=[\prod_{t=1}^T(1+R_t)]^\frac{1}{T}$
+
+<b>Geometric and Arithmetic Mean Returns</b>
+![AG_A_mean](model02/AG_A_mean.png)
+![AG_G_mean](model02/AG_G_mean.png)\
+The number may confuse you, but do not forget the measure unit is different.
+
+The geometric mean is always less than or equal to the arithmetic mean. The only time that the two means will be equal is when there is no variability in the observations—that is, when all the observations in the series are the same.
+
+The more disperse the observations, the greater the difference between the arithmetic and geometric means.
+
+The geometric mean return represents the growth rate or compound rate of return on an investment. With its focus on the profitability of an investment over a `multi-period` horizon, the geometric mean is of key interest to investors. The arithmetic mean return, focusing on average `single-period` performance, is also of interest.
+
+Suppose we purchased a stock for €100 and two years later it was worth €100, with an intervening year at €200. 
+1. The geometric mean of 0% is clearly the compound rate of growth during the two years, which we can confirm by compounding the returns: ${[(1 + 1.00)(1 − 0.50)]}^{1/2}$ − 1 = 0%.
+2. The arithmetic mean, which is [100% + −50%]/2 = 25%, can distort our assessment of historical performance.
+
+If we want to estimate the average return over a one-period horizon, we should use the arithmetic mean because the arithmetic mean is the average of one-period returns. If we want to estimate the average returns over more than one period, however, we should use the geometric mean of returns because the geometric mean captures how the total returns are linked over time. In a forward-looking context, a financial analyst calculating expected risk premiums may find that the weighted mean is appropriate, with the probabilities of the possible outcomes used as the weights.
+
+### The Harmonic Mean
+$\overline{X}_H = \frac{n}{\sum_{i=1}^n(1/X_i)}$ With $X_i>0$ for i=1,2,...,n \
+The harmonic mean is appropriate in cases in which the variable is a rate or a ratio.
+
+The harmonic mean is the value obtained by summing the reciprocals of the observations—terms of the form 1/Xi—then averaging that sum by dividing it by the number of observations n, and, finally, taking the reciprocal of the average.(有点绕 读完 能懂)
+
+The harmonic mean may be viewed as a special type of weighted mean in which an observation's weight is inversely proportional to its magnitude. For example, if there is a sample of observations of 1, 2, 3, 4, 5, 6, and 1,000, the harmonic mean is 2.8560. Compared to the arithmetic mean of 145.8571, we see the influence of the outlier (the 1,000) to be much less than in the case of the arithmetic mean. So, the harmonic mean is quite useful as a measure of central tendency in the presence of outliers.
