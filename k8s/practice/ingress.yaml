@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules: # routing rules request to host forward to myapp-internal-service
+  - host: myapp.com
+    http: # this is not about http/https for browser URL
+      paths:
+      - backend:
+          service:
+            name: myapp-internal-service
+            port:
+              number: 8080
