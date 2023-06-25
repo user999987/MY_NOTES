@@ -137,7 +137,7 @@ To illustrate the weighted mean concept, an investment manager with $100 million
 $Weighted\ Mean=0.7*stocks+0.3*bonds$
 
 ### Geometric Mean
-$Geometric\ Mean=\sqrt[n]{X_1*X_2*...*X_N}$\\
+$Geometric\ Mean=\sqrt[n]{X_1*X_2*...*X_N}$\
 Risky assets can have negative returns up to −100% (if their price falls to zero), so
 we must take some care in defining the relevant variables to average in computing a geometric mean. We must recast the returns to make them positive. We do this by adding 1.0 to the returns expressed as decimals, where Rt represents the return in period t. The term (1 + $R_t$) represents the year-ending value relative to an initial unit of investment at the begin- ning of the year. As long as we use (1 + $R_t$), the observations will never be negative because the biggest negative return is −100%. The result is the geometric mean of 1 + $R_t$; by then subtracting 1.0 from this result, we obtain the geometric mean of the individual returns $R_t$.\
 $1+R_G=\sqrt[T]{(1+R_1)*(1+R_2)*...*(1+R_T)}$\
@@ -168,3 +168,31 @@ The harmonic mean is appropriate in cases in which the variable is a rate or a r
 The harmonic mean is the value obtained by summing the reciprocals of the observations—terms of the form 1/Xi—then averaging that sum by dividing it by the number of observations n, and, finally, taking the reciprocal of the average.(有点绕 读完 能懂)
 
 The harmonic mean may be viewed as a special type of weighted mean in which an observation's weight is inversely proportional to its magnitude. For example, if there is a sample of observations of 1, 2, 3, 4, 5, 6, and 1,000, the harmonic mean is 2.8560. Compared to the arithmetic mean of 145.8571, we see the influence of the outlier (the 1,000) to be much less than in the case of the arithmetic mean. So, the harmonic mean is quite useful as a measure of central tendency in the presence of outliers.
+
+The harmonic mean is used most often when the data consist of rates and ratios, such as P/Es. Suppose three peer companies have P/Es of 45, 15, and 15. The arithmetic mean is 25, but the harmonic mean, which gives less weight to the P/E of 45, is 19.3.
+
+The harmonic mean is a relatively specialized concept of the mean that is appropriate for averaging ratios ("amount per unit") when the ratios are repeatedly applied to a fixed quantity to yield a variable number of units.
+
+Averaging ratios? Take a look at this example:\
+Suppose you are driving from point A to point B at two different speeds: 40 km/h and 60 km/h. The distance between A and B is 120 kilometers.\
+So what is the average speed?\
+It is (120+120)/(120/40+120/60)=48\
+Divide 120 on upper and lower side, it will become:\
+2/(1/40+1/60)=48\
+You will find out it is equivalent to harmonic mean. Now you have better understanding about why it is appropriate for averaging ratios. In essence, it value is sum_distance/sum_time.
+
+Arithmetic mean × Harmonic mean = Geometric mean\
+we will not go into the proof of this relationship, the basic result follows. However, the key question is: Which mean to use in what circumstances?
+![which_measure](model02/model_02_which_measure.png)
+
+## SECTION 8 QUANTILES
+### Quartiles, Quintiles, Deciles, and Percentiles
+We know that the median divides a distribution of data in half. We can define other dividing lines that split the distribution into smaller sizes. Quartiles divide the dis- tribution into quarters, quintiles into fifths, deciles into tenths, and percentiles into hundredths. Given a set of observations, the yth percentile is the value at or below which y% of observations lie. \
+First quartile (Q1) is also the 25th percentile.\
+The interquartile range (IQR) is the difference between the third quartile and the first quartile, or IQR = Q3 − Q1.
+
+Let $P_y$ be the value at or below which y% of the distribution lies, or the yth percentile. The formula for the position (or location) of a percentile in an array with n entries sorted in ascending order is:\
+$L_y = (n+1)\frac{y}{100}$\
+where $y$ is the percentage point at which we are dividing the distribution, and $L_y$ is the location(L) of the percentile($P_y$) in the array sorted in ascending order. In general, as the sample size increases, the percentile location calculation becomes more accurate; in small samples it may be quite approximate.
+1. $L_y$ is a whole number, good
+2. $L_y$ is not a integer,
