@@ -1,59 +1,66 @@
 # Organizing, Visualizing, and Describing Data
 ## SECTION 2 DATA TYPES
 ### Numerical versus Categorical Data
-From a statistical perspective, data can be classified into two basic groups: numerical data(数值数据) and categorical data(分类数据).
-1. Numerical Data: are values that represent measured or counted quantities as a number and are also called quantitative data. It can be split into continuous data and discrete data.
-2. Categorical Data: (also called qualitative data) are values that describe a quality or characteristic of a group of observations and therefore can be used as labels to divide a dataset into groups to summarize and visualize.
-    * Nominal data: are not amenable to being organized in a logical order. no inherent order or ranking. Like gender, color, martial status etc. Often, financial models, such as regression models, require input data to be numerical; so, nominal data in the input dataset must be coded numerically before applying an algorithm (that is, a process for problem solving) for performing the analysis. 
-    * Ordinal data: are categorical values that can be logically ordered or ranked.
+From a statistical perspective, data can be classified into two basic groups: numerical data(数值数据) and categorical data(分类数据).\
+从统计学角度来看，数据可以分为两个基本的类别：数值数据和分类数据。
+1. Numerical Data: are values that represent measured or counted quantities as a number and are also called quantitative data. It can be split into continuous data and discrete data. 数值数据：代表以数字形式表示的测量或计数数量的值，也被称为定量数据。它可以分为连续数据和离散数据。
+2. Categorical Data: (also called qualitative data) are values that describe a quality or characteristic of a group of observations and therefore can be used as labels to divide a dataset into groups to summarize and visualize. 分类数据（也称为定性数据）是描述一组观察结果的质量或特征的值，因此可以用作标签将数据集分组以进行总结和可视化。
+    * Nominal data: are not amenable to being organized in a logical order. no inherent order or ranking. Like gender, color, martial status etc. Often, financial models, such as regression models, require input data to be numerical; so, nominal data in the input dataset must be coded numerically before applying an algorithm (that is, a process for problem solving) for performing the analysis. 名义数据（Nominal data）无法按照逻辑顺序进行组织。它们没有固有的顺序或排名。例如，性别、颜色、婚姻状况等。通常，金融模型（如回归模型）要求输入数据为数值类型；因此，在应用算法（即问题解决过程）进行分析之前，输入数据集中的名义数据必须进行数值编码。
+    * Ordinal data: are categorical values that can be logically ordered or ranked. 有序数据（Ordinal data）是可以按照逻辑排序或排名的分类值。教育程度：高中毕业、大学本科、硕士研究生、博士研究生。这些教育程度可以按照学位的高低进行排序。客户满意度：非常不满意、不满意、一般、满意、非常满意。这些满意度可以按照满意程度的高低进行排列。
 ### Cross-Sectional versus Time-Series versus Panel Data
 Another data classification standard is based on how data are collected. 
-* Variable: a characteristic or quantity that can be measured, counted, or categorized and is subject to change. A variable can also be called a field, an attribute, or a feature. 
-* Observation: is the value of a specific variable collected at a point in time or over a specific period of time.
-1. Cross-sectional data: a list of the observations of a specific variable from multiple observational units at a given point in time. 
-2. Time-series data: are a sequence of observations for a single observational unit of a specific variable collected over time and at discrete and typically equally spaced intervals of time, such as daily, weekly, monthly, annually, or quarterly. 
-3. Panel data: are a mix of time-series and cross-sectional data that are frequently used in financial analysis and modeling
+* Variable: a characteristic or quantity that can be measured, counted, or categorized and is subject to change. A variable can also be called a field, an attribute, or a feature. 变量：可测量、计数或分类的特征或数量，而且可随时间或情况的改变而变化。变量也可以称为字段、属性或特征。
+* Observation: is the value of a specific variable collected at a point in time or over a specific period of time. 观测值：在某一时间点或特定时间段内收集的特定变量的值。
+1. Cross-sectional data: a list of the observations of a specific variable from multiple observational units at a given point in time.  交叉断面数据（Cross-Sectional Data）是在给定时间点上收集的数据，用于描述不同个体或单位的特征。例如，在特定年份对不同家庭的收入水平进行调查
+2. Time-series data: are a sequence of observations for a single observational unit of a specific variable collected over time and at discrete and typically equally spaced intervals of time, such as daily, weekly, monthly, annually, or quarterly. 时间序列数据（Time-Series Data）是按照时间顺序收集的数据，用于观察变量随时间的变化。例如，每个月记录的股票价格或每年的国内生产总值数据。
+3. Panel data: are a mix of time-series and cross-sectional data that are frequently used in financial analysis and modeling. 面板数据（Panel Data）是同时包含交叉断面和时间序列的数据，即对多个个体或单位在一段时间内进行观察。它结合了交叉断面数据和时间序列数据的特征，可用于分析个体间的差异和随时间的变化。例如，对不同地区的失业率进行每月跟踪观察
 
 ### Structured versus Unstructured Data
-1. Structured data: are highly organized in a pre-defined manner, usually with repeating patterns.Typical examples of structured com- pany financial data are:
-    * Market data: data issued by stock exchanges, such as intra-day and daily closing stock prices and trading volumes.
-    * Fundamental data: data contained in financial statements, such as earnings per share, price to earnings ratio, dividend yield, and return on equity.
-    * Analytical data: data derived from analytics, such as cash flow projections or forecasted earnings growth.
+1. Structured data: are highly organized in a pre-defined manner, usually with repeating patterns.Typical examples of structured company financial data are: 结构化数据：以预定义的方式高度组织化的数据，通常具有重复的模式。结构化公司财务数据的典型示例包括: 
+    * Market data: data issued by stock exchanges, such as intra-day and daily closing stock prices and trading volumes. 市场数据：由股票交易所发布的数据，例如股票的日内和每日收盘价格以及交易量
+    * Fundamental data: data contained in financial statements, such as earnings per share, price to earnings ratio, dividend yield, and return on equity. 基本数据：包含在财务报表中的数据，例如每股收益、市盈率、股息收益率和股权回报率
+    * Analytical data: data derived from analytics, such as cash flow projections or forecasted earnings growth. 分析数据：由分析工具得出的数据，例如现金流预测或预测的盈利增长。
 
-2. Unstructured data: are data that do not follow any conventionally organized forms. Some common types of unstructured data are text—such as financial news, posts in social media, and company filings with regulators—and also audio/ video, such as managements' earnings calls and presentations to analysts.
+2. Unstructured data: are data that do not follow any conventionally organized forms. Some common types of unstructured data are text—such as financial news, posts in social media, and company filings with regulators—and also audio/ video, such as managements' earnings calls and presentations to analysts. 非结构化数据：指不符合传统组织形式的数据。一些常见的非结构化数据类型包括文本数据（例如金融新闻、社交媒体帖子和向监管机构提交的公司文件），以及音频/视频数据（例如管理层的盈利电话会议和分析师演示）
 
-Unstructured data are a relatively new classification driven by the rise of alternative data (i.e., data generated from unconventional sources, like electronic devices, social media, sensor networks, and satellites, but also by companies in the normal course of business) and its growing adoption in the financial industry.By indicating the source from which the data are generated, such data can be classified into three groups:
-* Produced by individuals (i.e., via social media posts, web searches, etc.);
-* Generated by business processes (i.e., via credit card transactions, corporate
-regulatory filings, etc.); and
-* Generated by sensors (i.e., via satellite imagery, foot traffic by mobile devices, etc.).\
-Unstructured data may offer new market insights not normally contained in data from traditional sources and may provide potential sources of returns for investment processes. Typically, financial models are able to take only structured data as inputs; therefore, unstructured data must first be transformed into structured data that models can process.
+Unstructured data are a relatively new classification driven by the rise of alternative data (i.e., data generated from unconventional sources, like electronic devices, social media, sensor networks, and satellites, but also by companies in the normal course of business) and its growing adoption in the financial industry.By indicating the source from which the data are generated, such data can be classified into three groups: 非结构化数据是一个相对较新的分类，它受到替代数据的兴起的推动。替代数据指的是从非传统来源生成的数据，如电子设备、社交媒体、传感器网络和卫星，以及公司在日常业务中生成的数据。这些数据来源提供了有价值的见解，并在金融行业中越来越受到采用。根据数据生成的来源，非结构化数据可以分为三类：
+* Produced by individuals (i.e., via social media posts, web searches, etc.); 由个人产生（例如社交媒体帖子、网络搜索等）
+* Generated by business processes (i.e., via credit card transactions, corporate regulatory filings, etc.); 由业务流程产生（例如信用卡交易、公司监管文件等）
+* Generated by sensors (i.e., via satellite imagery, foot traffic by mobile devices, etc.) 由传感器产生（例如卫星图像、移动设备的人流量等）。
+Unstructured data may offer new market insights not normally contained in data from traditional sources and may provide potential sources of returns for investment processes. Typically, financial models are able to take only structured data as inputs; therefore, unstructured data must first be transformed into structured data that models can process. 非结构化数据可能提供传统数据来源中通常不包含的新市场见解，并为投资过程提供潜在的回报来源。通常情况下，金融模型只能接受结构化数据作为输入，因此非结构化数据必须首先转化为模型可以处理的结构化数据。
 
-The SEC has utilized eXtensible Business Reporting Language (XBRL) to structure data.The data extracted from the XBRL submission can be organized into five tab-delimited TXT format files that contain information about the submission, including taxonomy `tags` (i.e., financial statement items), `dates`, units of measure (`uom`), `values` (i.e., for the tag items), and more—making it readable by computer.
+The SEC has utilized eXtensible Business Reporting Language (XBRL) to structure data.The data extracted from the XBRL submission can be organized into five tab-delimited TXT format files that contain information about the submission, including taxonomy `tags` (i.e., financial statement items), `dates`, units of measure (`uom`), `values` (i.e., for the tag items), and more—making it readable by computer. SEC已经利用可扩展商业报告语言（XBRL）来对数据进行结构化。从XBRL提交中提取的数据可以组织成五个以制表符分隔的TXT格式文件，其中包含关于提交的信息，包括分类法标签（例如财务报表项目）、日期、度量单位（uom）、数值（例如标签项目）等等，使其可以被计算机读取。
+
 ![xbrl](model02/model_02_XBRL.png)
 
 ### Data Summarization
-Raw data can be organized into two typ- ical formats for quantitative analysis: one-dimensional arrays and two-dimensional rectangular arrays.
+Raw data can be organized into two typical formats for quantitative analysis: one-dimensional arrays and two-dimensional rectangular arrays. 原始数据可以按照以下两种典型格式进行定量分析的组织：一维数组和二维矩形数组
 1. one-dimensional array
 2. two-dimensional rectangular array: also called a data table
 
 ## SECTION 4 SUMMARIZING DATA USING FREQUENCY DISTRIBUTIONS
 ![frequency_distribution](model02/model_02_frequency_distribution.png)
-* absolute frequency: or simply the raw frequency, is the actual number of obser- vations counted for each unique value of the variable
-* relative frequency (in the third column), which is calculated as the absolute frequency of each unique value of the variable divided by the total number of observations.
+* absolute frequency: or simply the raw frequency, is the actual number of observations counted for each unique value of the variable 绝对频数（也称为原始频数）是变量每个唯一值的实际观测次数。
+* relative frequency (in the third column), which is calculated as the absolute frequency of each unique value of the variable divided by the total number of observations. 相对频数是通过将变量的每个唯一值的绝对频数除以总观测次数来计算的。
 
-1. assume we have `−4.57, −4.04, −1.64, 0.28, 1.34, 2.35, 2.38, 4.28, 4.42, 4.68, 7.16, and 11.43` ascend
+Procedure for constructing a frequency distribution for numerical data
+1. assume we have `−4.57, −4.04, −1.64, 0.28, 1.34, 2.35, 2.38, 4.28, 4.42, 4.68, 7.16, and 11.43` Sort the data in ascending order.
 2. 11.43-(-4.57)=16
 3. let's set k=4, then bin width is 16/4=4
-4. ![determine_bin](model_02_determine_bin.png)
+4. ![determine_bin](model02/model_02_determine_bin.png)
 5. bins are [-4.57 to -0.57), [-0.57, 3.43)...
-6. ![fd_bin](model_02_fd_bin.png)
-When build frequency distribution with bin, we can start with a relatively small bin width, we can see whether or not the bins are mostly empty and whether or not the value of k associated with that bin width is too large. If the bins are mostly empty, implying that k is too large, we can consider increasingly larger bins (i.e., smaller values of k) until we have a frequency distribution that effectively summarizes the distribution.
+6. ![fd_bin](model02/model_02_fd_bin.png)
+
+When build frequency distribution with bin, we can start with a relatively small bin width, we can see whether or not the bins are mostly empty and whether or not the value of k associated with that bin width is too large. If the bins are mostly empty, implying that k is too large, we can consider increasingly larger bins (i.e., smaller values of k) until we have a frequency distribution that effectively summarizes the distribution.\
+当使用区间构建频率分布时，我们可以从相对较小的区间宽度开始，观察区间是否大部分为空，以及与该区间宽度关联的k值是否过大。如果区间大部分为空，意味着k值过大，我们可以考虑增加区间的大小（即减小k值），直到我们得到一个有效地总结分布的频率分布。
+
 
 We turn to these issues in discussing the construction of frequency distributions for daily returns of the fictitious Euro-Asia-Africa (EAA) Equity Index. The dataset of daily returns of the EAA Equity Index spans a five-year period and consists of 1,258 observations with a minimum value of −4.1% and a maximum value of 5.0%. Thus, the range of the data is 5% − (−4.1%) = 9.1%, approximately.\
-Suppose that for ease of interpretation we want to use a bin width stated in whole rather than fractional percentages. In the case of the daily EAA Equity Index returns, a 1% bin width would be associated with 9.1/1 = 9.1 bins, which can be rounded up to k = 10 bins.
-![p1](model_02_fd_cumulative_p1.png)
-![p2](model_02_fd_cumulative_p2.png)
+我们在讨论构建虚构的Euro-Asia-Africa（EAA）股票指数的日收益频率分布时，将会涉及到这些问题。EAA股票指数的日收益数据集跨越了五年的时间段，包含了1,258个观察值，最小值为-4.1%，最大值为5.0%。因此，数据的范围为5% - (-4.1%) = 9.1%，近似值。\
+Suppose that for ease of interpretation we want to use a bin width stated in whole rather than fractional percentages. In the case of the daily EAA Equity Index returns, a 1% bin width would be associated with 9.1/1 = 9.1 bins, which can be rounded up to k = 10 bins.\
+假设为了便于解释，我们希望使用以整数百分比表示的分组宽度。对于每日的EAA股票指数收益数据而言，1%的分组宽度将对应于9.1/1 = 9.1个分组，可以将其向上取整为k = 10个分组。\
+![p1](model02/model_02_fd_cumulative_p1.png)
+![p2](model02/model_02_fd_cumulative_p2.png)
 
 ## SECTION 5 SUMMARIZING DATA USING A CONTINGENCY TABLE
 We have shown that the frequency distribution table is a powerful tool to summarize data for one variable. Contingency table is used to summarize data for two variables simultaneously.\
@@ -187,6 +194,7 @@ we will not go into the proof of this relationship, the basic result follows. Ho
 
 ## SECTION 8 QUANTILES
 ### Quartiles, Quintiles, Deciles, and Percentiles
+四分位数, 五分位数, 十分位数, 百分位数
 We know that the median divides a distribution of data in half. We can define other dividing lines that split the distribution into smaller sizes. Quartiles divide the dis- tribution into quarters, quintiles into fifths, deciles into tenths, and percentiles into hundredths. Given a set of observations, the yth percentile is the value at or below which y% of observations lie. \
 First quartile (Q1) is also the 25th percentile.\
 The interquartile range (IQR) is the difference between the third quartile and the first quartile, or IQR = Q3 − Q1.
@@ -195,4 +203,22 @@ Let $P_y$ be the value at or below which y% of the distribution lies, or the yth
 $L_y = (n+1)\frac{y}{100}$\
 where $y$ is the percentage point at which we are dividing the distribution, and $L_y$ is the location(L) of the percentile($P_y$) in the array sorted in ascending order. In general, as the sample size increases, the percentile location calculation becomes more accurate; in small samples it may be quite approximate.
 1. $L_y$ is a whole number, good
-2. $L_y$ is not a integer,
+2. $L_y$ is not a integer, $L_y$ lies between the two closest integer numbers (one above and one below), and we use linear interpolation between those two places to determine Py. Interpolation means estimating an unknown value on the basis of two known values that surround it (i.e., lie above and below it); the term "linear" refers to a straight-line estimate.\
+Assume {2,5,8,12,15}, we need find the P75. \
+(25/100)*(n+1)=0.25*(5+1)=1.5\
+Now linear interpolation comes to play:\
+Two closet integers of 1.5 are 1 and 2.\
+$P_y=(1.5-1)*biggerNumber+(2-1.5)*smallerNumber$\
+$P_y=(1.5-1)*5+(2-1.5)*2=3.5$\
+Notice: This is an estimated value.
+
+![whisker_plot](model02/model_02_box_whiskerplot.png)
+
+The "box" represents the lower bound of the second quartile and the upper bound of the third quartile, with the median or arithmetic average noted as a measure of central tendency of the entire distribution.\
+The whiskers are the lines that run from the box and are bounded by the "fences", which represent the lowest and highest values of the distribution.
+
+Visually, the interquartile range is the height of the box and the fences are set at extremes. But another form of box and whisker plot typically uses 1.5 times the interquartile range for the fences. Thus, the upper fence is 1.5 times the interquartile range added to the upper bound of Q3, and the lower fence is 1.5 times the interquartile range subtracted from the lower bound of Q2. As noted, any observation above (below) the upper (lower) fence is deemed to be an outlier.
+![whisker_1half](model02/model_02_whisker_1half.png)
+
+## SECTION 9 MEASURES OF DISPERSION 离散度的测量
+The mean return tells us where returns, and investment results, are centered.
