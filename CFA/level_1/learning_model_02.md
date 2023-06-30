@@ -33,7 +33,7 @@ The SEC has utilized eXtensible Business Reporting Language (XBRL) to structure 
 
 ![xbrl](model02/model_02_XBRL.png)
 
-### Data Summarization
+## SECTION 3 ORGANIZING DATA FOR QUANTITATIVE ANALYSIS
 Raw data can be organized into two typical formats for quantitative analysis: one-dimensional arrays and two-dimensional rectangular arrays. 原始数据可以按照以下两种典型格式进行定量分析的组织：一维数组和二维矩形数组
 1. one-dimensional array
 2. two-dimensional rectangular array: also called a data table
@@ -63,10 +63,12 @@ Suppose that for ease of interpretation we want to use a bin width stated in who
 ![p2](model02/model_02_fd_cumulative_p2.png)
 
 ## SECTION 5 SUMMARIZING DATA USING A CONTINGENCY TABLE
-We have shown that the frequency distribution table is a powerful tool to summarize data for one variable. Contingency table is used to summarize data for two variables simultaneously.\
+We have shown that the frequency distribution table is a powerful tool to summarize data for one variable. Contingency table is used to summarize data for two variables simultaneously. \
+我们已经展示了频数分布表是用于总结单个变量数据的强大工具。而列联表则是用于同时总结两个变量数据的工具。\
 `Contingency Table based on total count`:\
 ![pf](model02/model_02_pf_by_sector_market_cap.png)\
 There are 275 small-cap health care stocks, making it the portfolio's largest subgroup in terms of frequency. These data are also called `joint frequencies` because you are joining one variable from the row (i.e., sector) and the other variable from the column (i.e., market cap) to count observations. The joint frequencies are then added across rows and across columns, and these corresponding sums are called `marginal frequencies`. For example, the marginal frequency of health care stocks in the portfolio is the sum of the joint frequencies across all three levels of market cap, so 435 (= 275 + 105 + 55)\
+根据总计数，有275个小市值医疗保健股票，这使其成为投资组合中频率最高的子组。这些数据也被称为联合频率，因为您将一行中的一个变量（即行业）与一列中的另一个变量（即市值）结合起来进行观察计数。然后，将联合频率在行和列上相加，这些相应的总和被称为边际频率。例如，投资组合中医疗保健股票的边际频率是在所有三个市值级别上联合频率的总和，即435（= 275 + 105 + 55）\
 `Contingency Table relative frequencies based on total count`\
 ![f_t](model02/model_02_frequency_total.png)\
 
