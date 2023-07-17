@@ -40,3 +40,6 @@
 40. outlier: 异常值
 41. P/E: stands for Price-to-Earnings ratio. It is a financial metric used to evaluate the valuation of a company's stock. The P/E ratio is calculated by dividing the market price per share of a company's stock by its earnings per share (EPS). For example, if a company has earnings of $10 million and has 5 million outstanding shares, the earnings per share (EPS) would be $2 ($10 million divided by 5 million shares). So, in this case, each share of the company's stock represents $2 of earnings.
 42. Quantile: 分位数-用概率作为依据将一批数据分开的那个点. "太不像话了，这次考试竟然有60%的同学不及格"这句话里就有一个分位数的应用. 以学生成绩为例: 60,70,87,56,35,64,28,84,89,65. 如果想在这10位同学在中淘汰至少35%,同时让65%的同学晋级, 如何做? 找到一个数, 小雨等于这个书的同学至少有35%, 大于等于这个数的同学至少有65%, 这个数记为0.35分位点. 要想顺利找到这个数, 需要将数据排序.
+43. kurtosis: the sharpness of the peak of a frequency-distribution curve
+44. empirical probability: estimate the probability of an event as a relative frequency of occurrence based on historical data
+45. draw on: use one's experience, talents, or skills as a resource.
