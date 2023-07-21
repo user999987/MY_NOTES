@@ -158,15 +158,14 @@ The name “star schema” comes from the fact that when the table relationships
 A variation of this template is known as the snowflake schema, where dimensions are further broken down into subdimensions. For example, there could be separate tables for brands and product categories, and each row in the dim_product table could ref‐ erence the brand and category as foreign keys, rather than storing them as strings in the dim_product table. Snowflake schemas are more normalized than star schemas, but star schemas are often preferred because they are simpler for analysts to work with
 
 ## Column Storage
-
+* 行DB是B+树索引
+* 列DB是位图+压缩索引
 ### Column storage engine
 The idea behind column-oriented storage is simple: don’t store all the values from one row together, but store all the values from each column together instead. If each column is stored in a separate file, a query only needs to read and parse those columns that are used in that query, which can save a lot of work.
 ![column_db](./pic/column_db.png)
 The column-oriented storage layout relies on each column file containing the rows in the same order. Thus, if you need to reassemble an entire row, you can take the 23rd entry from each of the individual column files and put them together to form the 23rd row of the table.
 
 ### Column Compression
-Often, the number of distinct values in a column is small compared to the number of rows (for example, a retailer may have billions of sales transactions, but only 100,000 distinct products). We can now take a column with n distinct values and turn it into n separate bitmaps: one bitmap for each distinct value, with one bit for each row. The bit is 1 if the row has that value, and 0 if not.
-
 
 ```
 Example of bitmap but it is different from the description above
@@ -174,19 +173,37 @@ Example of bitmap but it is different from the description above
 这是24位, 这个时候假如我们要存放2 4 6 8 9 10 17 19 21这些数字到我们的BitMap里，我们只需把对应的位设置为1就可以了
 [0 0 0 1 0 1 0 1 0 0 0 0 0 0 1 1 1 0 1 0 1 0 1 0]
 ```
+product_sk的前四位和最后两位是69, 所以 bitmap for product_sk=69 的前四位和最后两位是1 其他是0 \
+product_sk的第五位是74, bitmap for product_sk=74 的第五位就是1 其他位是0 \
+其他亦一样 
 
+
+product_sk=69: 0,4,12,2(0 zeros, 4 ones, 12 zeros, 2 ones)\
+product_sk=74: (4 zeros, 1 one, rest zeros)
+
+![column_compress](./pic/cloumn_compress.png)
+Often, the number of distinct values in a column is small compared to the number of rows (for example, a retailer may have billions of sales transactions, but only 100,000 distinct products). We can now take a column with n distinct values and turn it into n separate bitmaps: one bitmap for each distinct value, with one bit for each row. The bit is 1 if the row has that value, and 0 if not. \
+如果 n 非常小（例如，国家 / 地区列可能有大约 200 个不同的值），则这些位图可以将每行存储成一个比特位。但是，如果 n 更大，大部分位图中将会有很多的零（我们说它们是稀疏的）。在这种情况下，位图可以另外再进行游程编码（run-length encoding，一种无损数据压缩技术）\
+这些位图索引非常适合数据仓库中常见的各种查询。
+```sql
+WHERE product_sk IN（30，68，69）// 计算位图的位或操作
+WHERE product_sk = 31 AND store_sk = 3 //计算bitmap的位与操作
+```
 ### Sort Order in Column Storage
 列 order sort 一般是排列一个列中的属性根据排列好的 order 在进行下一个属性的sort<br>
 如果每列各自排各自的那row就乱掉了<br>
 
+按顺序排序的另一个好处是它可以帮助压缩列。如果主要排序列没有太多个不同的值，那么在排序之后，将会得到一个相同的值连续重复多次的序列。一个简单的游程编码（就像我们用于 图 3-11 中的位图一样）可以将该列压缩到几 KB —— 即使表中有数十亿行
 
-Having multiple sort orders in a column-oriented store is a bit similar to having mul‐ tiple secondary indexes in a row-oriented store. But the big difference is that the row- oriented store keeps every row in one place (in the heap file or a clustered index), and secondary indexes just contain pointers to the matching rows. In a column store, there normally aren’t any pointers to data elsewhere, only columns containing values.
+既然不同的查询受益于不同的排序顺序，为什么不以几种不同的方式来存储相同的数据呢？反正数据都需要做备份，以防单点故障时丢失数据。因此你可以用不同排序方式来存储冗余数据，以便在处理查询时，调用最适合查询模式的版本。
+
+Having multiple sort orders in a column-oriented store is a bit similar to having multiple secondary indexes in a row-oriented store. But the big difference is that the row-oriented store keeps every row in one place (in the heap file or a clustered index), and secondary indexes just contain pointers to the matching rows. In a column store, there normally aren’t any pointers to data elsewhere, only columns containing values.
 
 
 
 ### Writing to Column-Oriented Storage
 An update-in-place approach, like B-trees use, is not possible with compressed columns. If you wanted to insert a row in the middle of a sorted table, you would most likely have to rewrite all the column files. As rows are identified by their position within a column, the insertion has to update all columns consistently.<br>
-Fortunately, we have already seen a good solution earlier in this chapter: LSM-trees.All writes first go to an in-memory store, where they are added to a sorted structure and prepared for writing to disk.
+Fortunately, we have already seen a good solution earlier in this chapter: LSM-trees.All writes first go to an in-memory store, where they are added to a sorted structure and prepared for writing to disk. 内存中的存储是面向行还是列的并不重要。当已经积累了足够的写入数据时，它们将与硬盘上的列文件合并，并批量写入新文件。
 
 
 ### Aggregation: Data Cubes and Materialized Views
@@ -194,11 +211,12 @@ Another aspect of data warehouses that is worth mentioning briefly is materializ
 
 One way of creating such a cache is a materialized view. In a relational data model, it is often defined like a standard (virtual) view: a table-like object whose contents are the results of some query. The difference is that a materialized view is an actual copy of the query results, written to disk, whereas a virtual view is just a shortcut for writ‐ ing queries. When you read from a virtual view, the SQL engine expands it into the view’s underlying query on the fly and then processes the expanded query.
 
-When the underlying data changes, a materialized view needs to be updated, because it is a denormalized copy of the data. The database can do that automatically, but such updates make writes more expensive, which is why materialized views are not often used in OLTP databases. In read-heavy data warehouses they can make more sense (whether or not they actually improve read performance depends on the indi‐ vidual case).
+When the underlying data changes, a materialized view needs to be updated, because it is a denormalized copy of the data. The database can do that automatically, but such updates make writes more expensive, which is why materialized views are not often used in OLTP databases. In read-heavy data warehouses they can make more sense (whether or not they actually improve read performance depends on the individual case).
 
 A common special case of a materialized view is known as a data cube or OLAP cube. 
 ```
-For example, there are five dimensions: date, product, store, prmotion and customer in fact table. each cell contains the sales for a particular date-product-store-promotion- customer combination.
+For example, there are five dimensions: date, product, store, promotion and customer in fact table. 
+Each cell contains the sales for a particular date-product-store-promotion- customer combination.
 ```
 
 The advantage of a materialized data cube is that certain queries become very fast because they have effectively been precomputed. 

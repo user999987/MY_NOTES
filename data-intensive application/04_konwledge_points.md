@@ -1,5 +1,5 @@
 # Encoding and Evolution
-In this chapter we will look at several formats for encoding data, including JSON, XML, Protocol Buffers, Thrift, and Avro. In particular, we will look at how they han‐ dle schema changes and how they support systems where old and new data and code need to coexist. We will then discuss how those formats are used for data storage and for communication: in web services, Representational State Transfer (REST), and remote procedure calls (RPC), as well as message-passing systems such as actors and message queues.
+In this chapter we will look at several formats for encoding data, including JSON, XML, Protocol Buffers, Thrift, and Avro. In particular, we will look at how they handle schema changes and how they support systems where old and new data and code need to coexist. We will then discuss how those formats are used for data storage and for communication: in web services, Representational State Transfer (REST), and remote procedure calls (RPC), as well as message-passing systems such as actors and message queues.
 
 ## Formats for Encoding Data
 Programs usually work with data in (at least) two different representations:
@@ -7,6 +7,10 @@ Programs usually work with data in (at least) two different representations:
 2. write data to a file or send it over the network, it is self-contained sequence of bytes.(for example, a JSON document).
 
 The translation from the in-memory representation to a byte sequence is called encoding (also known as serialization or marshalling), and the reverse is called decoding (parsing, deserialization, unmarshalling)
+
+从内存中到字节序列的转换成为 编码, (也被称为 序列化 或 编组), 反过来称为 解码(解析, 反序列化, 反编组)
+
+
 
 ### Thrift(Facebook) ProtocolBuffer(Google) Dubbo(Alibaba)
 Q: 为啥有了RPC要用HTTP?<br>
@@ -27,3 +31,6 @@ gRPC is based on ProtocolBuffer
     * etc
 
 Message brokers are used as follows: one process sends a message to a named queue or topic, and the broker ensures that the message is delivered to one or more consumers of or subscribers to that queue or topic. There can be many producers and many consumers on the same topic.
+
+Actor（执行者）:
+在并发编程中，"Actor" 是指一种并发模型，用于构建可扩展的并发应用程序。每个 "Actor" 是一个独立的执行单元，拥有自己的状态和行为。"Actor" 之间通过异步消息传递进行通信，而不共享数据。这种模型类似于现实世界中的演员，每个演员都可以独立地接收消息，处理消息，并执行相应的操作
