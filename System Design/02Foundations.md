@@ -1,3 +1,13 @@
+## 零 NoSQL
+Non-Relational databases are also called NoSQL databases. Popular ones are CouchDB, Neo4j, Cassandra, HBase, Amazon DynamoDB, etc.
+
+These databases are grouped into four categories: key-value stores, graph stores, column stores, and document stores. Join operations are generally not supported in non-relational databases.
+
+Non-relational databases might be the right choice if:
+* Your application requires super-low latency.
+* Your data are unstructured, or you do not have any relational data.
+* You only need to serialize and deserialize data (JSON, XML, YAML, etc.).
+* You need to store a massive amount of data.
 ## 壹 Load Balancer
 Load balancer add failover to the web tier by distributing the traffic to different servers. Yet there is possibility that LB itself goes down, in that case, we can have high availability pair of load balancers or DNS based failover which means multiple load balancers are assigned to single domain name.
 
