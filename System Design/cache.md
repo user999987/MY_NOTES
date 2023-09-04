@@ -66,9 +66,11 @@ hotspot invalid.
 1. cache never expire
 2. mutex, when data is empty, only 1 request is allowed to pass to pull the date from db and update cache.
 
-## Cache Avalanche
+## Cache Avalanche 缓存雪崩
 at some point in time or within a short period of time, the cache set fails or the cache system fails or there is not data in the cache.
 1. redis die? Cluster. restore? RDB(snapshot) AOF(Append only file)
 2. Keys exipre at the same time? add a random number to expiration
 3. Hystrix
 4. application cache
+
+
