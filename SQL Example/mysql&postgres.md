@@ -256,3 +256,12 @@ load data local infile '/root/sql1.log' into table tb_user fieldsterminated by '
 * 业务操作时，避免对主键的修改
 
 页合并页分裂: https://www.bilibili.com/video/BV1Kr4y1i7ru?p=90&vd_source=338ccc664622651493b6fe1ded5bc801
+
+##### Order by优化
+order by排序具有两种排序方式：
+* Using filesort：
+    * 通过表的索引或全表扫描，读取满足条件的数据行，然后在排序缓冲区sortbuffer中完成排序操作
+    * 所有不是通过索引直接返回排序结果的排序都叫 FileSort 排序。
+* Using index：
+    * 通过有序索引顺序扫描直接返回有序数据，这种情况即为 using index
+    * 不需要额外排序，操作效率高。
