@@ -15,7 +15,7 @@ def findClosestValueInBst(tree, target):
     result_ref = float('inf')
     def findValue(tree, target):
         nonlocal result, result_ref
-        if tree is None:
+        if not tree:
             return
         value = abs(tree.value-target)    
         if value < result_ref:
@@ -23,6 +23,6 @@ def findClosestValueInBst(tree, target):
             result_ref = value
         findValue(tree.left, target)
         findValue(tree.right, target)
-        return
+        
     findValue(tree, target)
     return result
