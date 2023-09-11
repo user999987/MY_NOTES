@@ -20,3 +20,7 @@ The configuration of W, R and N is a typical tradeoff between latency and consis
 * W + R > N, strong consistency is is guaranteed because there must be at least one overlapping node that has the latest data to ensure consistency.
 * R = 1, W = N, fast read
 * R = N, W = 1, fast write
+
+### Inconsistency resolution: versioning
+To resolve the issue, we need a versioning system that can detect and reconcile conflicts. 
+
