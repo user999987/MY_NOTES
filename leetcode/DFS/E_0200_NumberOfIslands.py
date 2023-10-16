@@ -1,3 +1,4 @@
+# 1 land 0 water
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         def process(m,n,i,j):

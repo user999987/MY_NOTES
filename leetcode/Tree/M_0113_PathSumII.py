@@ -13,7 +13,7 @@ class Solution:
                 return
             track.append(root.val)
             if root.left is None and root.right is None:
-               if sum(track)==targetSum:
+                if sum(track)==targetSum:
                     res.append(track[:])
                 return
             process(root.left,track[:])
