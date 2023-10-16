@@ -55,7 +55,7 @@ For instance, your bank might state that a particular CD(Certificate of Deposit)
 This rate is strictly a quoting convention because $(1+0.0067)^{12} = 1.083$, not 1.08; the term $(1+r_s)$ is not meant to be future value factor when compounding is more frequent than annual.\
 这个利率严格来说是一种引用惯例，因为$(1+0.0067)^{12} = 1.083$，而不是1.08；当复利频率高于年度时，术语(1 + rs)并不意味着未来价值因子.\
 With more than one compounding period per year, the future value formula can be expressed as $FV_N = PV(1+r_s/m)^{mN}$ where $r_s$ is the stated annual interest rate, $m$ is the number of compounding periods per year, and $N$ now stands for the number of years. \
-当每年有多个复利期时，未来价值公式可以表示为$FV_N = PV(1+r_s/m)^{mN}$其中$r_s$是陈述年利率，$m$是每年的复利期数，$N$表示年数。
+当每年有多个复利期时，未来价值公式可以表示为 $FV_N = PV(1+r_s/m)^{mN}$ 其中 $r_s$ 是陈述年利率， $m$ 是每年的复利期数， $N$ 表示年数。
 
 ## SECTION 5 CONTINUOUS COMPOUNDING
 The preceding discussion on compounding periods illustrates discrete compounding, which credits interest after a discrete amount of time has elapsed. 前面关于复利期的讨论说明了离散复利，它在经过一段离散的时间后计算利息. If the number of compounding periods per year becomes infinite, then interest is said to compound continuously. 如果每年的复利期数趋近于无穷大，那么称为连续复利. \
