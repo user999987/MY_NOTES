@@ -66,7 +66,7 @@ $FV_N = PVe^{{r_s}N}$ ($e$ is the math $e$≈2.7182818)
 Example: Suppose a $10,000 investment will earn 8 percent compounded continuously for two years. We can compute the future value with Equation 4 as follows\
 ```
 $PV = \$10,000$ \
-$rs = 8% = 0.08$ \
+$r_s = 8\% = 0.08$ \
 $N=2$ \
 $FV_N = PVe^{{r_s}N}$
 ![compounding_frequency_FV](model01/model_01_compounding_frequency_on_FV.png)
