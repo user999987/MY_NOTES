@@ -41,6 +41,13 @@ for i:=0;i<10;i++{
 fmt.Println(b.String())//中国aaaaaaaaaa
 ```
 
+
+### "1"==string(1)
+integer 1 与字符串 "1" 本身就是不同类型值,直接比较会返回false。
+string(1) 实际上是整数1的Unicode码点表示,值是49,而不是字符串"1"。
+
+
+
 ## Defer
 defer的顺序是个stack 后入先出, 其调用的参数的值 在 defer 定义时就确定了 
 ```go
@@ -171,6 +178,37 @@ send an empty struct `{}` to channel done as a signal
 ###  garbage collection of channel and goroutine 
 一个 channel 被 sendq 和 recvq 中的 所有 goroutines 引用着. 如果一个 channel 的这两个队列只要一个不为空, 则此协程不会被垃圾回收. 
 
+## Channel Use Case
+### Timer
+```go
+func AfterDuration(d time.Duration) <- chan struct{} {
+	c := make(chan struct{}, 1)
+	go func() {
+		time.Sleep(d)
+		c <- struct{}{}
+	}()
+	return c
+}
+```
+```go
+func main() {
+	done := make(chan struct{})
+	go func() {
+		for i := 1; i < 500; i++ {
+			time.Sleep(time.Second * 2)
+			fmt.Println("hello")
+
+		}
+		done <- struct{}{}
+	}()
+	<-done
+}
+```
+
+### mutex
+通道可以用做互斥锁 但是不如 sync 标准库的 互斥锁高效
+### timeout
+可以用来处理超时 实际上 context 的超时底层实现就是用了 channel
 ## Functions & Structs
 Functions are first-class values in Go, just like other types. They can be assigned to variables, passed as arguments, returned from other functions etc
 
@@ -180,6 +218,43 @@ make() allocates memory for the struct and initializes all fields to their zero 
 ```go
 p := make(Person)
 ```
+
+
+## sync 包
+### sync.WaitGroup
+请注意
+```go
+wg.Add(delta) - (&wg).Add(delta)
+wg.Done() - (&wg).Done()
+wg.Wait() - (&wg).Wait()
+简写形式
+```
+一个sync.WaitGroup值用来让某个协程等待其它若干协程都先完成它们各自的任务
+
+```go
+func main() {
+	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
+
+	const N = 5
+	var values [N]int32
+
+	var wg sync.WaitGroup
+	wg.Add(N)
+	for i := 0; i < N; i++ {
+		i := i
+		go func() {
+			values[i] = 50 + rand.Int31n(50)
+			fmt.Println("Done:", i)
+			wg.Done() // <=> wg.Add(-1)
+		}()
+	}
+
+	wg.Wait()
+	// 所有的元素都保证被初始化了。
+	fmt.Println("values:", values)
+}
+```
+### sync.Once
 
 ## 引用？
 只有切片、映射、通道和函数类型属于引用类型。
