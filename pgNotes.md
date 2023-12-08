@@ -77,8 +77,9 @@ PIX
 
 brew install protobuf
 brew install protoc-gen-go
-go get -d github.com/envoyproxy/protoc-gen-validate
 
-proto file 里面的 import "validate/validate.proto"; 这个validate.proto需要手动复制粘贴到你的folder中 插件安装并不会做这一步
 
-protoc -I .  --go_out="." --validate_out="lang=go:." protos/server.proto
+
+1. go install github.com/envoyproxy/protoc-gen-validate@latest
+2. need manually add "validate/validate.proto" to your workspace
+3. protoc -I .  --go_out="." --validate_out="lang=go:." protos/server.proto  
