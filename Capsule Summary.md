@@ -37,7 +37,8 @@ import * as md5 from 'md5';
 
 function bytesToHex(bytes: any) {
     for (var hex = [], i = 0; i < bytes.length; i++) {
-      hex.push((bytes[i] >>> 4).toString(16));
+      hex.push((bytes[i] >>> 4).toString(16));twq 345  0\ ./
+      
       hex.push((bytes[i] & 0xF).toString(16));
     }
     return hex.join('');
@@ -78,5 +79,6 @@ console.log(sku=="f269d2ec-ff47-37b3-b14f-c7217ca0c40f")
 lsof -i :8080 \
 lsof -iTCP \
 
+lsof -i :6379
 
 $ killall clock1

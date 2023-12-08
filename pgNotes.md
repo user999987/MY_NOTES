@@ -46,3 +46,39 @@ REDIS_HOST=127.0.0.1
     * payout: interact with channel endpoints about payout service
     * channelname.go: this file will include some client level definitions and payin/payout client initialization (Attention: payin/payout client is a Singleton instance that stores all related config info like key, secret, api url etc. )
     * channlename.pb.go: protobuff generated file. it defines all the structs that you need when interact with channels' endpoints
+
+
+
+
+## Key Points
+查询时候 成功失败一定要映射specific status code, 不确定的 status code 可以找渠道确认, 非确定的可以PROCESSING 避免出错. Payin 尽量让PAID的范围足够小 Payout尽量让REJECTED的范围足够小 比如下面
+```
+if statusCode==0
+{
+    return "REJECTED"
+}else if statusCode==1
+{
+    return "PAID"
+}else if ...{
+    ...
+}else 
+{
+    return "PROCESSING"
+}
+```
+
+PIX
+
+一般都是两步 第一步查 pix key 第二步确认打款 不论名字怎么叫 其本质不变
+
+第二步即便收到成功的返回 也只是说打款的请求成功收到了 最终transaction 状态要看回调或者查询的结果
+
+
+
+brew install protobuf
+brew install protoc-gen-go
+go get -d github.com/envoyproxy/protoc-gen-validate
+
+proto file 里面的 import "validate/validate.proto"; 这个validate.proto需要手动复制粘贴到你的folder中 插件安装并不会做这一步
+
+protoc -I .  --go_out="." --validate_out="lang=go:." protos/server.proto
