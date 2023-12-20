@@ -83,3 +83,10 @@ brew install protoc-gen-go
 1. go install github.com/envoyproxy/protoc-gen-validate@latest
 2. need manually add "validate/validate.proto" to your workspace
 3. protoc -I .  --go_out="." --validate_out="lang=go:." protos/server.proto  
+
+
+pix
+original_error - ref: fastcash
+
+non-pix 
+ref: paypal
